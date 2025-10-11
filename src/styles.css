@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Creato Display';
+  src: url('./assets/fonts/CreatoDisplay-Light.otf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Creato Display';
+  src: url('./assets//fonts/CreatoDisplay-Medium.otf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Creato Display';
+  src: url('./assets/fonts/CreatoDisplay-Medium.otf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Creato Display';
+  src: url('./assets/fonts/CreatoDisplay-Bold.otf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Malvides';
+  src: url('./assets//fonts/Malvides.otf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@theme {
+  --font-creato-display: 'Creato Display', sans-serif;
+  --font-malvides: Malvides, cursive;
+}
