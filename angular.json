@@ -20,7 +20,7 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "outputPath": "dist/kick_off_live/browser",
+            "outputPath": "dist/kick_off_live/browser/browser/browser",
             "assets": [
               {
                 "glob": "**/*",
