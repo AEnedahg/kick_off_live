@@ -7,22 +7,64 @@
 <meta property="og:type" content="website">
 <meta name="author" content="Anthony Enedah">
 
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-<p>home works!</p>
+  
 
-<p class="font-malvides">Hello</p>
+  .slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
 
-<div>
-  <div class="slide">
-    <img src="assets/rooney.webp" alt="rooney_image" class="w-full"/>
+  .slides {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide {
+    flex: 0 0 100%;
+    height: 100%;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+
+  /* Optional: dark overlay for better text visibility */
+  .slide::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+  }
+</style>
+
+<main class="w-full h-[700px] lg:h-[90vh] overflow-hidden bg-black">
+  <div class="slider-container">
+    <div class="slides" #slides>
+      <div class="slide text-white">
+        <img src="assets/drogba.jpg" alt="drogba" />
+      </div>
+      <div class="slide text-white">
+        <img src="assets/rooney.jpg" alt="rooney" />
+      </div>
+      <div class="slide text-white">
+        <img src="assets/ribery.jpg" alt="ribery" />
+      </div>
+    </div>
   </div>
-  <div class="slide">
-    <img src="assets/ibrahimovic.webp" alt="ibrahimovic_image" class="w-full"/>
-  </div>
-  <div class="slide">
-    <img src="assets/griezeman-one.webp" alt="griezeman-one image" class="w-full"/>
-  </div>
-  <div class="slide">
-    <img src="assets/ronaldo.jpg" alt="ronaldo image" class="w-full"/>
-  </div>
-</div>
+</main>

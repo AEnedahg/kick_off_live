@@ -1,1 +1,30 @@
+<nav class="bg-black/90 p-4 flex justify-between items-center relative">
+  <h3 class="text-white font-malvides text-2xl">KickOff Live</h3>
+  
+  @if (!menuOpen) {
+    <img
+      src="icons/football.png"
+      alt="menu"
+      class="size-8 cursor-pointer"
+      (click)="toggleMenu()"
+    />
+  }
+
+  <div #mobileMenu class="fixed top-0 right-0 w-[70%] h-full bg-black/95 text-white flex flex-col items-center pt-30 gap-6 translate-x-full
+  z-50
+  ">
+    @if (menuOpen) {
+    <img
+      src="icons/close.png"
+      alt="close"
+      class="size-8 cursor-pointer absolute top-4 right-4"
+      (click)="toggleMenu()"
+    />
+  }
+    <a routerLink="/" (click)="closeMenu()" class="text-xl cursor-pointer">Home</a>
+    <a routerLink="/scores" (click)="closeMenu()" class="text-xl cursor-pointer">Scores</a>
+    <a routerLink="/teams" (click)="closeMenu()" class="text-xl cursor-pointer">Teams</a>
+    <a routerLink="/contact" (click)="closeMenu()" class="text-xl cursor-pointer">Contact</a>
+  </div>
+</nav>
 <router-outlet />

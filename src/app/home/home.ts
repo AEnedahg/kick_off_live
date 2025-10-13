@@ -1,23 +1,64 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild, OnDestroy, NgZone } from '@angular/core';
 import gsap from 'gsap';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './home.html',
-  styleUrls: ['./home.scss'],
+  styleUrls: [],
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('slides', { static: false }) slidesEl!: ElementRef<HTMLDivElement>;
+  slidesArray = [0, 1, 2];
+  currentIndex = 0;
+  autoSlideInterval: any;
+
+  constructor(private ngZone: NgZone) {}
+
   ngAfterViewInit() {
-    const slides = gsap.utils.toArray<HTMLElement>('.slide');
-    let current = 0;
+    if (!this.slidesEl?.nativeElement) return;
+    gsap.set(this.slidesEl.nativeElement, { x: 0 });
 
-    gsap.set(slides[0], { opacity: 1 });
+    this.ngZone.runOutsideAngular(() => {
+      this.autoSlideInterval = setInterval(() => {
+        this.ngZone.run(() => {
+          this.nextSlide();
+        });
+      }, 4000);
+    });
+  }
 
-    setInterval(() => {
-      const next = (current + 1) % slides.length;
-      gsap.to(slides[current], { opacity: 0, duration: 1 });
-      gsap.to(slides[next], { opacity: 1, duration: 1 });
-      current = next;
-    }, 3000);
+  moveSlide() {
+    if (!this.slidesEl?.nativeElement) return;
+    const slideWidth = this.slidesEl.nativeElement.offsetWidth;
+
+    gsap.to(this.slidesEl.nativeElement, {
+      x: -this.currentIndex * slideWidth,
+      duration: 0.8,
+      ease: 'power2.inOut',
+    });
+  }
+
+  nextSlide() {
+    this.currentIndex = (this.currentIndex + 1) % this.slidesArray.length;
+    this.moveSlide();
+  }
+
+  prevSlide() {
+    this.currentIndex = (this.currentIndex - 1 + this.slidesArray.length) % this.slidesArray.length;
+    this.moveSlide();
+  }
+
+  goToSlide(index: number) {
+    this.currentIndex = index;
+    this.moveSlide();
+  }
+
+  ngOnDestroy() {
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval);
+    }
   }
 }
