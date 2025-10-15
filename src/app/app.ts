@@ -1,10 +1,15 @@
 import { Component, signal, ElementRef, ViewChild } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import gsap from 'gsap';
+import { ImageSliderComponent } from './components/modern-footballers-slider/modern-footballers-slider';
+import { Cta } from './components/cta/cta';
+import { HomeComponent } from './home/home';
+import { PlayerOfMonthOne } from './components/player-of-month-one/player-of-month-one';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ImageSliderComponent, Cta, HomeComponent, PlayerOfMonthOne],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

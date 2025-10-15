@@ -1,0 +1,15 @@
+<div class="slider relative overflow-hidden w-full bg-black h-[500px]">
+  <div class="relative h-full max-w-[900px] mx-auto">
+    @for (slide of slidesMobile; track $index) {
+      <div
+        class="slide absolute inset-0 flex items-center justify-center"
+      >
+        <img
+          [src]="getResponsiveImage(slide.image)"
+          [alt]="slide.alt"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    }
+  </div>
+</div>

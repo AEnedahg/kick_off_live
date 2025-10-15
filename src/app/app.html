@@ -1,30 +1,78 @@
-<nav class="bg-black/90 p-4 flex justify-between items-center relative">
-  <h3 class="text-white font-malvides text-2xl">KickOff Live</h3>
-  
-  @if (!menuOpen) {
-    <img
-      src="icons/football.png"
-      alt="menu"
-      class="size-8 cursor-pointer"
-      (click)="toggleMenu()"
-    />
-  }
+<title>KickOff Life - Home</title>
+<meta name="description" content="Latest live football scores, match updates, and results.">
+<meta name="keywords" content="football, live scores, sports, matches, results">
+<meta property="og:title" content="Football Live Scores">
+<meta property="og:description" content="Stay updated with real-time football scores.">
+<meta property="og:image" content="logo.jpg">
+<meta property="og:type" content="website">
+<meta name="author" content="Anthony Enedah">
 
-  <div #mobileMenu class="fixed top-0 right-0 w-[70%] h-full bg-black/95 text-white flex flex-col items-center pt-30 gap-6 translate-x-full
-  z-50
-  ">
-    @if (menuOpen) {
-    <img
-      src="icons/close.png"
-      alt="close"
-      class="size-8 cursor-pointer absolute top-4 right-4"
-      (click)="toggleMenu()"
-    />
-  }
-    <a routerLink="/" (click)="closeMenu()" class="text-xl cursor-pointer">Home</a>
-    <a routerLink="/scores" (click)="closeMenu()" class="text-xl cursor-pointer">Scores</a>
-    <a routerLink="/teams" (click)="closeMenu()" class="text-xl cursor-pointer">Teams</a>
-    <a routerLink="/contact" (click)="closeMenu()" class="text-xl cursor-pointer">Contact</a>
+<div
+  class="lg:min-h-[700px] bg-cover bg-top bg-no-repeat relative max-w-[1440px] mx-auto min-h-[700px]"
+  style="background-image: url('assets/ronaldo-hero.webp');"
+>
+  <!-- NAV -->
+  <nav
+    class="p-4 lg:px-20 lg:py-5 flex justify-between items-center absolute top-0 w-full
+           bg-gradient-to-b from-black/60 to-transparent z-20"
+  >
+    <h3 class="font-malvides text-2xl lg:text-4xl text-white">KickOff Live</h3>
+    
+    @if (!menuOpen) {
+      <img
+        src="icons/football.png"
+        alt="menu"
+        class="size-8 cursor-pointer lg:hidden"
+        (click)="toggleMenu()"
+      />
+    }
+
+    <div
+      #mobileMenu
+      class="lg:hidden fixed top-0 right-0 w-[70%] h-full bg-blue-900/95 text-white flex flex-col items-center pt-30 gap-6 translate-x-full z-50"
+    >
+      @if (menuOpen) {
+        <img
+          src="icons/close.png"
+          alt="close"
+          class="size-8 cursor-pointer absolute top-4 right-4"
+          (click)="toggleMenu()"
+        />
+      }
+      <a routerLink="/" (click)="closeMenu()" class="text-xl">Home</a>
+      <a routerLink="/scores" (click)="closeMenu()" class="text-xl">Scores</a>
+      <a routerLink="/teams" (click)="closeMenu()" class="text-xl">Teams</a>
+      <a routerLink="/contact" (click)="closeMenu()" class="text-xl">Contact</a>
+    </div>
+
+    <div class="hidden lg:flex lg:w-1/3 lg:justify-between *:text-white *:cursor-pointer">
+      <a routerLink="/" class="text-xl">Home</a>
+      <a routerLink="/scores" class="text-xl">Scores</a>
+      <a routerLink="/teams" class="text-xl">Teams</a>
+      <a routerLink="/contact" class="text-xl">Contact</a>
+    </div>
+  </nav>
+
+  <div
+    class="absolute lg:top-2/3 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-2/3 text-white z-10 px-6
+      mt-60 mx-auto lg:mx-0 lg:mt-0 *:text-center
+    "
+  >
+    <h1 class="text-2xl lg:text-6xl font-bold">
+      Live Soccer Scores. Real-Time Action.
+    </h1>
+    <p class="text-base lg:text-xl mt-4 max-w-xl mx-auto">
+      Track every match, goal, and stat as it happens — from local leagues to world tournaments.
+    </p>
+    <button
+      class="block mx-auto mt-6 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition"
+    >
+      ⚽ See Today's Matches
+    </button>
   </div>
-</nav>
-<router-outlet />
+</div>
+<app-cta></app-cta>
+<app-home></app-home>
+<app-image-slider></app-image-slider>
+<app-player-of-month-one></app-player-of-month-one>
+<router-outlet></router-outlet>
