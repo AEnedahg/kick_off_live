@@ -16,7 +16,8 @@ export class ImageSliderComponent implements AfterViewInit, OnDestroy {
     { image: 'mbappe', alt: 'mbappe' },
     { image: 'bonmati', alt: 'bonmati' },
     { image: 'vinicius-jnr', alt: 'vinicius-jnr' },
-    { image: 'haaland', alt: 'haaland'}
+    { image: 'haaland', alt: 'haaland'},
+    { image: 'ronaldo', alt: 'ronaldo'}
   ];
 
   @ViewChild('slidesContainer') slidesContainer!: ElementRef;
